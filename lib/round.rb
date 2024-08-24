@@ -10,6 +10,7 @@ class Round
 
     def turns
         @turns
+        @turns.count += 1
     end
 
     def current_card
