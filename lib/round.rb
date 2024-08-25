@@ -6,19 +6,22 @@ class Round
     def initialize(deck)
         @deck = deck
         @turns = []
+        @current_card = deck.cards.first
+        @player_guess
     end
 
     def turns
         @turns
-        @turns.count += 1
     end
 
     def current_card
         @deck.cards[0]
     end
 
-    def take_turn
-
+    def take_turn(player_guess)
+        new_turn = Turn.new(player_guess, current_card)
+        require 'pry'; binding.pry
+        new_turn
     end
 
     def number_correct
