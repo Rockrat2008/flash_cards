@@ -8,9 +8,8 @@ class Deck
 
     def cards
         @deck.each do |card|
-            puts card
+            card
         end
-
     end
 
     def count
