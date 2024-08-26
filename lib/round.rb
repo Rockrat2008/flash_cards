@@ -1,7 +1,8 @@
 class Round
     attr_accessor :guesses_correct,
                   :guesses_incorrect,
-                  :number_of_questions
+                  :number_of_questions,
+                  :deck
 
     def initialize(deck)
         @deck = deck
@@ -21,10 +22,9 @@ class Round
     def take_turn(player_guess)
         new_turn = Turn.new(player_guess, current_card)
         @turns << new_turn
-        @number_correct =+ 1 if new_turn.correct?
+        @number_correct += 1 if new_turn.correct?
         new_turn.feedback
-        # require 'pry'; binding.pry
-        # new_turn
+        new_turn
     end
 
     def number_correct
