@@ -7,7 +7,7 @@ class Round
         @deck = deck
         @turns = []
         @current_card = deck.cards.first
-        @guesses_correct = 0
+        @number_correct = 0
     end
 
     def turns
@@ -21,14 +21,14 @@ class Round
     def take_turn(player_guess)
         new_turn = Turn.new(player_guess, current_card)
         @turns << new_turn
-        @guesses_correct =+ 1 if new_turn.correct?
+        @number_correct =+ 1 if new_turn.correct?
         new_turn.feedback
         # require 'pry'; binding.pry
-        new_turn
+        # new_turn
     end
 
     def number_correct
-        @guesses_correct
+        @number_correct
     end
 
     def number_correct_by_category(category)
@@ -36,7 +36,7 @@ class Round
     end
 
     def percent_correct
-        (@guesses_correct/@turns.count * 100).round(1)
+        (@number_correct/@turns.count * 100).round(1)
     end
 
     def percent_correct_by_category
