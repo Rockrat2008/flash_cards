@@ -63,9 +63,12 @@ class Round
         player_name = gets.chomp
         puts "Welcome #{player_name}! You are playing with #{deck.count} cards."
         puts "------------------------------------"
-        puts "This is card #{@card_number} out of #{deck.count}."
-        puts "Question: #{deck.card[0]}."
+
+        deck.cards.each_with_index do |card, index|
+            puts "This is card #{index + 1} out of #{deck.cards.count}."
+        puts "Question: #{card.question}."
         puts "Answer?"
         answer = gets.chomp
+        end   
     end
 end
