@@ -51,7 +51,7 @@ class Round
 
     def percent_correct_by_category
         total_in_category = @turns.count do |turn|
-            turns.card.category == category
+            @turns.card.category == category
         end
         correct_in_category = number_correct_by_category(category)
         (correct_in_category.to_f / total_in_category * 100).round(1)
@@ -76,7 +76,8 @@ class Round
         puts "You had #{@number_correct} correct guesses out of #{@turns.count} for a total score of #{percent_correct}%."
         by_category = deck.cards.map(&:category).uniq
         by_category.each do |category|
-            puts "#{category} - % correct"
+            puts "#{category} - You got #{number_correct_by_category(category)} for % correct"
         end
+        require 'pry'; binding.pry
     end
 end
