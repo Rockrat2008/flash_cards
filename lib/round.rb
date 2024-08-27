@@ -28,7 +28,6 @@ class Round
         new_turn = Turn.new(player_guess, current_card)
         @turns << new_turn
         @number_correct += 1 if new_turn.correct?
-        new_turn.feedback
         new_turn
     end
 
@@ -69,6 +68,14 @@ class Round
         puts "Question: #{card.question}."
         puts "Answer?"
         answer = gets.chomp
-        end   
+        new_turn = take_turn(answer)
+        puts new_turn.feedback
+        end
+
+        puts "******  Game Over!  ******"
+        puts "You had X correct guesses out of X for a total score of X %"
+        puts "category result"
+        puts "category result"
+        puts "category result"
     end
 end
