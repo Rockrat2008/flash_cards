@@ -82,8 +82,7 @@ class Round
         puts "You had #{@number_correct} correct guesses out of #{@turns.count} for a total score of #{percent_correct}%."
         by_category = deck.cards.map(&:category).uniq
         by_category.each do |category|
-            puts "#{category} - You got #{number_correct_by_category(category)} for % correct"
+            puts "#{category} - You got #{number_correct_by_category(category)} for #{percent_correct_by_category(category)}% correct"
         end
-        require 'pry'; binding.pry
     end
 end
