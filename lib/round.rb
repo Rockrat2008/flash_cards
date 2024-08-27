@@ -61,7 +61,7 @@ class Round
         puts "Please enter your name:"
         player_name = gets.chomp
         puts "Welcome #{player_name}! You are playing with #{deck.count} cards."
-        puts "------------------------------------"
+        puts "----------------------------------------------"
 
         deck.cards.each_with_index do |card, index|
             puts "This is card #{index + 1} out of #{deck.cards.count}."
@@ -69,13 +69,14 @@ class Round
         puts "Answer?"
         answer = gets.chomp
         new_turn = take_turn(answer)
-        puts new_turn.feedback
+        puts "That is #{new_turn.feedback.upcase}!"
         end
 
         puts "******  Game Over!  ******"
-        puts "You had X correct guesses out of X for a total score of X %"
-        puts "category result"
-        puts "category result"
-        puts "category result"
+        puts "You had #{@number_correct} correct guesses out of #{@turns.count} for a total score of #{percent_correct}%."
+        by_category = deck.cards.map(&:category).uniq
+        by_category.each do |category|
+            puts "#{category} - % correct"
+        end
     end
 end
