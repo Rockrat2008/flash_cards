@@ -1,6 +1,6 @@
 class Round
-    attr_accessor :guesses_correct,
-                  :guesses_incorrect,
+    attr_accessor :number_correct,
+                  :number_correct_by_category,
                   :number_of_questions,
                   :deck
 
@@ -9,6 +9,7 @@ class Round
         @turns = []
         @current_card = deck.cards.first
         @number_correct = 0
+        @number_correct_by_category = 0
     end
 
     def turns
@@ -32,7 +33,13 @@ class Round
     end
 
     def number_correct_by_category(category)
-
+        category_correct = 0
+        @turns.count do |turn|
+            if turn.correct? && turn.card.category == category
+                category_correct += 1
+            end
+        end
+        category_correct
     end
 
     def percent_correct
@@ -40,6 +47,10 @@ class Round
     end
 
     def percent_correct_by_category
-
+        total_in_category = @turns.count do |turn|
+            turns.card.category == category
+        end
+        correct_in_category = number_correct_by_category(category)
+        (correct_in_category / total_in_category * 100).round(1)
     end
 end
