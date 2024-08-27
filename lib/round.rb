@@ -70,6 +70,7 @@ class Round
         answer = gets.chomp
         new_turn = take_turn(answer)
         puts "That is #{new_turn.feedback.upcase}!"
+        puts ""
         end
 
         puts "******  Game Over!  ******"
@@ -78,6 +79,5 @@ class Round
         by_category.each do |category|
             puts "#{category} - You got #{number_correct_by_category(category)} for % correct"
         end
-        require 'pry'; binding.pry
     end
 end
