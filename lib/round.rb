@@ -3,6 +3,8 @@ class Round
                   :number_correct_by_category,
                   :number_of_questions,
                   :deck
+                  :card_number
+                  :answer
 
     def initialize(deck)
         @deck = deck
@@ -10,6 +12,8 @@ class Round
         @current_card = deck.cards.first
         @number_correct = 0
         @number_correct_by_category = 0
+        @card_number = 1
+        @answer
     end
 
     def turns
@@ -52,5 +56,16 @@ class Round
         end
         correct_in_category = number_correct_by_category(category)
         (correct_in_category / total_in_category * 100).round(1)
+    end
+
+    def start
+        puts "Please enter your name:"
+        player_name = gets.chomp
+        puts "Welcome #{player_name}! You are playing with #{deck.count} cards."
+        puts "------------------------------------"
+        puts "This is card #{@card_number} out of #{deck.count}."
+        puts "Question: #{deck.card[0]}."
+        puts "Answer?"
+        answer = gets.chomp
     end
 end
