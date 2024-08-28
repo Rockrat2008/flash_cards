@@ -35,6 +35,7 @@ class Round
         @number_correct
     end
 
+    #Refactor opporunity per Meghan
     def number_correct_by_category(category)
         category_correct = 0
         @turns.count do |turn|
