@@ -7,9 +7,7 @@ class Deck
     end
 
     def cards
-        @deck.each do |card|
-            card
-        end
+        @deck
     end
 
     def count
